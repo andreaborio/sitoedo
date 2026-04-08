@@ -769,94 +769,117 @@ img { display: block; max-width: 100%; height: auto; }
 
 
 /* -----------------------------------------------------------
-   CONTACT
+   CONTACT — Full-bleed portrait bg, cinematic feel
    ----------------------------------------------------------- */
 .contact {
-  background: var(--dark);
-  padding: var(--section-pad) 0;
   position: relative;
-}
-
-.contact__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(48px, 7vw, 120px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
-.contact__heading {
+/* Full-bleed portrait background */
+.contact__portrait-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.contact__portrait-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.contact__portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(12,12,24,0.5) 0%,
+      rgba(12,12,24,0.3) 30%,
+      rgba(12,12,24,0.7) 100%),
+    linear-gradient(90deg,
+      rgba(12,12,24,0.7) 0%,
+      rgba(12,12,24,0.2) 60%,
+      transparent 100%);
+}
+
+.contact__container {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(120px, 18vh, 200px);
+  padding-bottom: clamp(80px, 12vh, 160px);
+}
+
+.contact__label-top {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  letter-spacing: 0.04em;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: clamp(36px, 5vh, 64px);
+  color: var(--pink);
+  opacity: 0.6;
+  display: block;
+  margin-bottom: clamp(20px, 3vh, 36px);
 }
+
 
 .contact__details {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 0;
 }
 
-.contact__item {
+.contact__link {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 40px);
+  padding: clamp(18px, 2.5vh, 28px) 0;
+  border-bottom: 1px solid rgba(240,236,230,0.12);
+  transition: border-color 0.4s;
+  position: relative;
 }
 
-.contact__label {
+.contact__link:first-child {
+  border-top: 1px solid rgba(240,236,230,0.12);
+}
+
+.contact__link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, var(--pink), var(--blue));
+  transition: width 0.8s var(--ease-out-expo);
+}
+
+.contact__link:hover::after { width: 100%; }
+
+.contact__link-label {
   font-weight: 400;
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   color: var(--cream);
   opacity: 0.4;
-  text-transform: lowercase;
+  min-width: 60px;
 }
 
-.contact__value {
-  font-weight: 500;
+.contact__link-value {
+  font-weight: 400;
   font-size: clamp(1rem, 2.2vw, 1.4rem);
   letter-spacing: 0.01em;
   color: var(--cream);
-  position: relative;
-  display: inline-block;
-  max-width: 100%;
+  transition: color 0.3s;
   overflow-wrap: break-word;
   word-break: break-word;
-  transition: color 0.3s;
 }
 
-.contact__value::after {
-  content: '';
-  position: absolute;
-  bottom: -3px; left: 0;
-  width: 0; height: 1px;
-  background: var(--pink);
-  transition: width 0.6s var(--ease-out-expo);
-}
-
-.contact__value:hover { color: var(--pink); }
-.contact__value:hover::after { width: 100%; }
-
-/* Portrait */
-.contact__portrait-inner {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 6px;
-  position: relative;
-}
-
-.contact__portrait-placeholder {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    160deg,
-    var(--dark-surface) 0%,
-    rgba(74,111,165,0.15) 50%,
-    var(--dark-surface) 100%
-  );
+.contact__link:hover .contact__link-value {
+  color: var(--pink);
 }
 
 /* -----------------------------------------------------------
@@ -950,9 +973,6 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* ── Tablet landscape / small desktop (769–1024px) ── */
 @media (max-width: 1024px) {
-  .contact__grid {
-    gap: clamp(40px, 5vw, 80px);
-  }
 }
 
 /* ── Tablet portrait (481–768px) ── */
@@ -980,16 +1000,6 @@ img { display: block; max-width: 100%; height: auto; }
   }
 
   .services__img { display: none; }
-
-  .contact__grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .contact__portrait-inner {
-    aspect-ratio: 4 / 3;
-    max-width: 100%;
-  }
 
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
@@ -1026,12 +1036,9 @@ img { display: block; max-width: 100%; height: auto; }
 
   .work__counter { right: 20px; }
 
-  .contact__heading {
-    font-size: clamp(1.6rem, 8vw, 2.4rem);
-    margin-bottom: clamp(28px, 4vh, 48px);
+  .contact__link-value {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
   }
-
-  .contact__details { gap: 28px; }
 }
 
 /* ── Very small screens (≤ 360px) ── */

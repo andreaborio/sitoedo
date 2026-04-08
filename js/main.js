@@ -251,25 +251,26 @@
     initWorkStack();
 
     // ─── Contact ───
-    gsap.from('.contact__info', {
-      y: 50, opacity: 0,
-      duration: 0.8,
+    gsap.from('.contact__label-top', {
+      y: 20, opacity: 0,
+      duration: 0.6,
       ease: 'power2.out',
       scrollTrigger: { trigger: '.contact', start: 'top 70%' }
     });
 
-    const portrait = document.querySelector('.contact__portrait-inner');
-    if (portrait) {
-      gsap.fromTo(portrait,
-        { clipPath: 'inset(100% 0 0 0)' },
-        {
-          clipPath: 'inset(0% 0 0 0)',
-          duration: 1.1,
-          ease: 'power3.inOut',
-          scrollTrigger: { trigger: '.contact__portrait', start: 'top 75%' }
-        }
-      );
-    }
+    gsap.from('.contact__link', {
+      y: 30, opacity: 0,
+      duration: 0.7,
+      stagger: 0.12,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: '.contact__details', start: 'top 80%' }
+    });
+
+    // Portrait bg parallax
+    gsap.to('.contact__portrait-bg img', {
+      y: 80,
+      scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'bottom top', scrub: 0.6 }
+    });
 
     // ─── Hero parallax ───
     gsap.to('.hero__title', {
