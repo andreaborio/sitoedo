@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edoardo Munari — Light Designer</title>
+  <meta name="description" content="Edoardo Munari — Light Designer e Consolle Operator di stanza a Torino.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <div class="preloader__slit"></div>
+  </div>
+
+  <!-- Custom Cursor (hidden on touch) -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__glow"></div>
+  </div>
+
+  <!-- Noise Overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="nav">
+      <a href="#hero" class="nav__logo" data-magnetic>EM</a>
+      <div class="nav__links">
+        <a href="#about" class="nav__link" data-magnetic>about</a>
+        <a href="#services" class="nav__link" data-magnetic>services</a>
+        <a href="#work" class="nav__link" data-magnetic>work</a>
+        <a href="#contact" class="nav__link" data-magnetic>contact</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Menu" data-magnetic>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" aria-hidden="true">
+    <a href="#about" class="mobile-menu__link">about</a>
+    <a href="#services" class="mobile-menu__link">services</a>
+    <a href="#work" class="mobile-menu__link">work</a>
+    <a href="#contact" class="mobile-menu__link">contact</a>
+  </div>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="hero">
+      <div class="hero__bg">
+        <img src="img/c2c-2.jpeg" alt="" loading="eager" class="hero__bg-img">
+      </div>
+      <div class="hero__overlay"></div>
+      <!-- Aceternity-inspired Spotlight cone -->
+      <div class="hero__spotlight" aria-hidden="true"></div>
+      <div class="hero__beams" aria-hidden="true">
+        <div class="hero__beam hero__beam--1"></div>
+        <div class="hero__beam hero__beam--2"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title" data-animate="hero">
+          <span class="hero__line"><span class="hero__word">EDOARDO</span></span>
+          <span class="hero__line"><span class="hero__word">MUNARI</span></span>
+        </h1>
+        <p class="hero__subtitle" data-animate="hero-sub">light designer</p>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about__grid">
+          <span class="about__label">ABOUT</span>
+          <div class="about__content">
+            <p class="about__text" data-animate="split-words">
+              light designer e consolle operator di stanza a torino, socio dipendente della cooperativa technical network. mi impegno affinchè dalla luce arrivi l'aiuto che chiedo al parmigiano con la pasta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="services__list">
+          <div class="services__item" data-animate="service">
+            <span class="services__number">01</span>
+            <div class="services__text">
+              <h3 class="services__title">design,</h3>
+
+            </div>
+            <div class="services__img" aria-hidden="true">
+              <img src="img/gabriponte.jpeg" alt="">
+            </div>
+            <div class="services__line"></div>
+          </div>
+          <div class="services__item" data-animate="service">
+            <span class="services__number">02</span>
+            <div class="services__text">
+              <h3 class="services__title">program,</h3>
+
+            </div>
+            <div class="services__img" aria-hidden="true">
+              <img src="img/console-1.jpg" alt="">
+            </div>
+            <div class="services__line"></div>
+          </div>
+          <div class="services__item" data-animate="service">
+            <span class="services__number">03</span>
+            <div class="services__text">
+              <h3 class="services__title">operate.</h3>
+
+            </div>
+            <div class="services__img" aria-hidden="true">
+              <img src="img/console-2.jpeg" alt="">
+            </div>
+            <div class="services__line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== WORK ==================== -->
+    <section id="work" class="work">
+      <div class="container">
+        <h2 class="work__heading" data-animate="heading">SELECTED WORKS</h2>
+
+        <div class="work__list">
+
+          <article class="work__item" data-animate="work-item">
+            <a href="#" class="work__link">
+              <div class="work__image" data-flashlight>
+                <div class="work__flashlight"></div>
+                <img src="img/c2c-1.jpeg" alt="C2C Festival — Light Design" loading="lazy">
+              </div>
+              <div class="work__info">
+                <span class="work__index">01</span>
+                <h3 class="work__title">C2C</h3>
+                <span class="work__year">2025</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="work__item" data-animate="work-item">
+            <a href="#" class="work__link">
+              <div class="work__image" data-flashlight>
+                <div class="work__flashlight"></div>
+                <img src="img/c2c-2.jpeg" alt="Milano Cortina 2026 — Light Design" loading="lazy">
+              </div>
+              <div class="work__info">
+                <span class="work__index">02</span>
+                <h3 class="work__title">MILANO CORTINA 2026</h3>
+                <span class="work__year">2026</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="work__item" data-animate="work-item">
+            <a href="#" class="work__link">
+              <div class="work__image" data-flashlight>
+                <div class="work__flashlight"></div>
+                <img src="img/console-1.jpg" alt="Kappa Futur Festival — Light Design" loading="lazy">
+              </div>
+              <div class="work__info">
+                <span class="work__index">03</span>
+                <h3 class="work__title">KAPPA FUTUR FESTIVAL</h3>
+                <span class="work__year">2025</span>
+              </div>
+            </a>
+          </article>
+
+          <article class="work__item" data-animate="work-item">
+            <a href="#" class="work__link">
+              <div class="work__image" data-flashlight>
+                <div class="work__flashlight"></div>
+                <img src="img/console-2.jpeg" alt="Graphic Days — Light Design" loading="lazy">
+              </div>
+              <div class="work__info">
+                <span class="work__index">04</span>
+                <h3 class="work__title">GRAPHIC DAYS</h3>
+                <span class="work__year">2025</span>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info" data-animate="contact">
+            <h2 class="contact__heading">CONTACTS</h2>
+            <div class="contact__details">
+              <div class="contact__item">
+                <span class="contact__label">phone</span>
+                <a href="tel:+393385721249" class="contact__value" data-magnetic>338 5721249</a>
+              </div>
+              <div class="contact__item">
+                <span class="contact__label">e-mail</span>
+                <a href="mailto:munari.edoardo@gmail.com" class="contact__value" data-magnetic>munari.edoardo@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact__portrait" data-animate="portrait">
+            <div class="contact__portrait-inner">
+              <div class="contact__portrait-placeholder"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy"></span>
+      <span class="footer__role">light designer — torino</span>
+    </div>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
+</body>
+</html>
