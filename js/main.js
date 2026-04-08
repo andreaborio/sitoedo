@@ -135,18 +135,6 @@
     });
   });
 
-  /* ── Flashlight: cursor tracking on work images ── */
-  if (!isTouch) {
-    document.querySelectorAll('[data-flashlight]').forEach(container => {
-      container.addEventListener('mousemove', (e) => {
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        container.style.setProperty('--fl-x', x + 'px');
-        container.style.setProperty('--fl-y', y + 'px');
-      });
-    });
-  }
 
   /* ── Preloader ── */
   const preloader = document.getElementById('preloader');
@@ -253,31 +241,8 @@
       });
     });
 
-    // ─── Work heading ───
-    gsap.from('.work__heading', {
-      y: 50, opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: '.work__heading', start: 'top 85%' }
-    });
-
-    // ─── Work items: reveal + clip-path ───
-    document.querySelectorAll('.work__item').forEach(item => {
-      const tl = gsap.timeline({
-        scrollTrigger: { trigger: item, start: 'top 80%' }
-      });
-
-      tl.to(item, { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' });
-
-      const img = item.querySelector('.work__image');
-      if (img) {
-        tl.fromTo(img,
-          { clipPath: 'inset(0 100% 0 0)' },
-          { clipPath: 'inset(0 0% 0 0)', duration: 1.1, ease: 'power3.inOut' },
-          '-=0.6'
-        );
-      }
-    });
+    // ─── Work: full-screen stacked cards ───
+    initWorkStack();
 
     // ─── Contact ───
     gsap.from('.contact__info', {
@@ -326,6 +291,138 @@
       y: -80, opacity: 0,
       scrollTrigger: { trigger: '.hero', start: 'top top', end: '70% top', scrub: 0.8 }
     });
+  }
+
+  /* ── Work: Stacked Fullscreen Cards ── */
+  function initWorkStack() {
+    const cards = gsap.utils.toArray('.work__card');
+    const counter = document.querySelector('.work__counter');
+    const counterCurrent = document.querySelector('.work__counter-current');
+    const workLabel = document.querySelector('.work__label');
+
+    if (!cards.length) return;
+
+    // Show counter & label while in work section
+    ScrollTrigger.create({
+      trigger: '.work',
+      start: 'top 80%',
+      end: 'bottom 20%',
+      onEnter: () => { gsap.to([counter, workLabel], { opacity: 1, duration: 0.4 }); },
+      onLeave: () => { gsap.to([counter, workLabel], { opacity: 0, duration: 0.4 }); },
+      onEnterBack: () => { gsap.to([counter, workLabel], { opacity: 1, duration: 0.4 }); },
+      onLeaveBack: () => { gsap.to([counter, workLabel], { opacity: 0, duration: 0.4 }); },
+    });
+
+    cards.forEach((card, i) => {
+      const title = card.querySelector('.work__card-title');
+      const year = card.querySelector('.work__card-year');
+      const img = card.querySelector('.work__card-img img');
+      const overlay = card.querySelector('.work__card-overlay');
+
+      // ─ First card: title visible immediately ─
+      if (i === 0) {
+        gsap.set(title, { opacity: 1, y: 0 });
+        gsap.set(year, { opacity: 0.6, y: 0 });
+      }
+
+      // ─ Title + year reveal on enter (cards 2+) ─
+      if (i > 0) {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 50%',
+          onEnter: () => {
+            gsap.to(title, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+            gsap.to(year, { opacity: 0.6, y: 0, duration: 0.7, delay: 0.15, ease: 'power3.out' });
+          },
+          onLeaveBack: () => {
+            gsap.to(title, { opacity: 0, y: 40, duration: 0.4 });
+            gsap.to(year, { opacity: 0, y: 20, duration: 0.3 });
+          },
+        });
+      }
+
+      // ─ Image parallax — scale(1.15) compensates movement ─
+      gsap.fromTo(img,
+        { y: 30, scale: 1.15 },
+        {
+          y: -30,
+          scale: 1.15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 0.4,
+          }
+        }
+      );
+
+      // ─ Recede effect: darken overlay + scale IMAGE (not card) ─
+      if (i < cards.length - 1) {
+        // Darken the card via its overlay
+        gsap.to(overlay, {
+          opacity: 1,
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top bottom',
+            end: 'top 20%',
+            scrub: 0.4,
+          }
+        });
+
+        // Scale image down inside overflow:hidden card — no black gaps
+        gsap.to(img, {
+          scale: 0.96,
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top bottom',
+            end: 'top 20%',
+            scrub: 0.4,
+          }
+        });
+
+        // Fade out title as card recedes
+        gsap.to(title, {
+          opacity: 0, y: -20,
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top bottom',
+            end: 'top 60%',
+            scrub: 0.4,
+          }
+        });
+
+        gsap.to(year, {
+          opacity: 0,
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top bottom',
+            end: 'top 70%',
+            scrub: 0.4,
+          }
+        });
+      }
+
+      // ─ Counter update ─
+      ScrollTrigger.create({
+        trigger: card,
+        start: 'top center',
+        end: 'bottom center',
+        onEnter: () => updateCounter(i + 1),
+        onEnterBack: () => updateCounter(i + 1),
+      });
+    });
+
+    function updateCounter(n) {
+      if (!counterCurrent) return;
+      gsap.to(counterCurrent, {
+        y: -10, opacity: 0, duration: 0.15,
+        onComplete: () => {
+          counterCurrent.textContent = String(n).padStart(2, '0');
+          gsap.fromTo(counterCurrent, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.25 });
+        }
+      });
+    }
   }
 
   /* ── Footer year ── */

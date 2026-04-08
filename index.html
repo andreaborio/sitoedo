@@ -142,68 +142,64 @@
 
     <!-- ==================== WORK ==================== -->
     <section id="work" class="work">
-      <div class="container">
-        <h2 class="work__heading" data-animate="heading">SELECTED WORKS</h2>
 
-        <div class="work__list">
+      <!-- Fixed counter -->
+      <div class="work__counter" aria-hidden="true">
+        <span class="work__counter-current">01</span>
+        <span class="work__counter-sep">&mdash;</span>
+        <span class="work__counter-total">04</span>
+      </div>
 
-          <article class="work__item" data-animate="work-item">
-            <a href="#" class="work__link">
-              <div class="work__image" data-flashlight>
-                <div class="work__flashlight"></div>
-                <img src="img/c2c-1.jpeg" alt="C2C Festival — Light Design" loading="lazy">
-              </div>
-              <div class="work__info">
-                <span class="work__index">01</span>
-                <h3 class="work__title">C2C</h3>
-                <span class="work__year">2025</span>
-              </div>
-            </a>
-          </article>
+      <!-- Fixed label -->
+      <div class="work__label" aria-hidden="true">SELECTED WORKS</div>
 
-          <article class="work__item" data-animate="work-item">
-            <a href="#" class="work__link">
-              <div class="work__image" data-flashlight>
-                <div class="work__flashlight"></div>
-                <img src="img/c2c-2.jpeg" alt="Milano Cortina 2026 — Light Design" loading="lazy">
-              </div>
-              <div class="work__info">
-                <span class="work__index">02</span>
-                <h3 class="work__title">MILANO CORTINA 2026</h3>
-                <span class="work__year">2026</span>
-              </div>
-            </a>
-          </article>
+      <!-- Stacked fullscreen cards -->
+      <div class="work__stack">
 
-          <article class="work__item" data-animate="work-item">
-            <a href="#" class="work__link">
-              <div class="work__image" data-flashlight>
-                <div class="work__flashlight"></div>
-                <img src="img/console-1.jpg" alt="Kappa Futur Festival — Light Design" loading="lazy">
-              </div>
-              <div class="work__info">
-                <span class="work__index">03</span>
-                <h3 class="work__title">KAPPA FUTUR FESTIVAL</h3>
-                <span class="work__year">2025</span>
-              </div>
-            </a>
-          </article>
+        <article class="work__card" data-work-index="1">
+          <div class="work__card-img">
+            <img src="img/c2c-1.jpeg" alt="C2C Festival — Light Design" loading="lazy">
+          </div>
+          <div class="work__card-overlay"></div>
+          <div class="work__card-content">
+            <h3 class="work__card-title">C2C</h3>
+            <span class="work__card-year">2025</span>
+          </div>
+        </article>
 
-          <article class="work__item" data-animate="work-item">
-            <a href="#" class="work__link">
-              <div class="work__image" data-flashlight>
-                <div class="work__flashlight"></div>
-                <img src="img/console-2.jpeg" alt="Graphic Days — Light Design" loading="lazy">
-              </div>
-              <div class="work__info">
-                <span class="work__index">04</span>
-                <h3 class="work__title">GRAPHIC DAYS</h3>
-                <span class="work__year">2025</span>
-              </div>
-            </a>
-          </article>
+        <article class="work__card" data-work-index="2">
+          <div class="work__card-img">
+            <img src="img/c2c-2.jpeg" alt="Milano Cortina 2026 — Light Design" loading="lazy">
+          </div>
+          <div class="work__card-overlay"></div>
+          <div class="work__card-content">
+            <h3 class="work__card-title">MILANO CORTINA 2026</h3>
+            <span class="work__card-year">2026</span>
+          </div>
+        </article>
 
-        </div>
+        <article class="work__card" data-work-index="3">
+          <div class="work__card-img">
+            <img src="img/console-1.jpg" alt="Kappa Futur Festival — Light Design" loading="lazy">
+          </div>
+          <div class="work__card-overlay"></div>
+          <div class="work__card-content">
+            <h3 class="work__card-title">KAPPA FUTUR FESTIVAL</h3>
+            <span class="work__card-year">2025</span>
+          </div>
+        </article>
+
+        <article class="work__card" data-work-index="4">
+          <div class="work__card-img">
+            <img src="img/console-2.jpeg" alt="Graphic Days — Light Design" loading="lazy">
+          </div>
+          <div class="work__card-overlay"></div>
+          <div class="work__card-content">
+            <h3 class="work__card-title">GRAPHIC DAYS</h3>
+            <span class="work__card-year">2025</span>
+          </div>
+        </article>
+
       </div>
     </section>
 
