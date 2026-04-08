@@ -6,6 +6,10 @@
 (function () {
   'use strict';
 
+  /* ── Force scroll to top on every load/refresh ── */
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
   /* ── Reduced-motion check ── */
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -149,11 +153,13 @@
     document.querySelector('.hero__scroll').style.opacity = '1';
     document.querySelectorAll('.hero__beam').forEach(b => b.style.opacity = '1');
     initScrollAnimations();
+    ScrollTrigger.refresh();
   } else {
     const preloaderTL = gsap.timeline({
       onComplete: () => {
         preloader.style.display = 'none';
         initScrollAnimations();
+        ScrollTrigger.refresh();
       }
     });
 
