@@ -386,27 +386,6 @@
             scrub: 0.4,
           }
         });
-
-        // Fade out title as card recedes
-        gsap.to(title, {
-          opacity: 0, y: -20,
-          scrollTrigger: {
-            trigger: cards[i + 1],
-            start: 'top bottom',
-            end: 'top 60%',
-            scrub: 0.4,
-          }
-        });
-
-        gsap.to(year, {
-          opacity: 0,
-          scrollTrigger: {
-            trigger: cards[i + 1],
-            start: 'top bottom',
-            end: 'top 70%',
-            scrub: 0.4,
-          }
-        });
       }
 
       // ─ Counter update ─
