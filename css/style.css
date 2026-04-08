@@ -767,25 +767,6 @@ img { display: block; max-width: 100%; height: auto; }
   opacity: 0.4;
 }
 
-/* Fixed label — top-left */
-.work__label {
-  position: fixed;
-  top: 50%;
-  left: var(--container-px);
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: left center;
-  z-index: 100;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cream);
-  opacity: 0;
-  transition: opacity 0.4s;
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
 
 /* -----------------------------------------------------------
    CONTACT
@@ -1044,7 +1025,6 @@ img { display: block; max-width: 100%; height: auto; }
   }
 
   .work__counter { right: 20px; }
-  .work__label { display: none; }
 
   .contact__heading {
     font-size: clamp(1.6rem, 8vw, 2.4rem);

@@ -304,7 +304,6 @@
     const cards = gsap.utils.toArray('.work__card');
     const counter = document.querySelector('.work__counter');
     const counterCurrent = document.querySelector('.work__counter-current');
-    const workLabel = document.querySelector('.work__label');
 
     if (!cards.length) return;
 
@@ -313,10 +312,10 @@
       trigger: '.work',
       start: 'top 80%',
       end: 'bottom 20%',
-      onEnter: () => { gsap.to([counter, workLabel], { opacity: 1, duration: 0.4 }); },
-      onLeave: () => { gsap.to([counter, workLabel], { opacity: 0, duration: 0.4 }); },
-      onEnterBack: () => { gsap.to([counter, workLabel], { opacity: 1, duration: 0.4 }); },
-      onLeaveBack: () => { gsap.to([counter, workLabel], { opacity: 0, duration: 0.4 }); },
+      onEnter: () => { gsap.to(counter, { opacity: 1, duration: 0.4 }); },
+      onLeave: () => { gsap.to(counter, { opacity: 0, duration: 0.4 }); },
+      onEnterBack: () => { gsap.to(counter, { opacity: 1, duration: 0.4 }); },
+      onLeaveBack: () => { gsap.to(counter, { opacity: 0, duration: 0.4 }); },
     });
 
     cards.forEach((card, i) => {
